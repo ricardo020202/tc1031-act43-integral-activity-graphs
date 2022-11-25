@@ -1,0 +1,16 @@
+Case 1: 6 ports not reachable from port Antwerp with MNP = 1.
+Case 2: 0 ports not reachable from port Ambarli with MNP = 4.
+Case 3: 0 ports not reachable from port Bandar with MNP = 4.
+Case 4: 0 ports not reachable from port Barcelona with MNP = 5.
+Case 5: 0 ports not reachable from port Charleston with MNP = 5.
+Case 6: 0 ports not reachable from port Barcelona with MNP = 4.
+Case 7: 0 ports not reachable from port Algeciras with MNP = 7.
+Case 8: 7 ports not reachable from port Callao with MNP = 1.
+Case 9: 0 ports not reachable from port Bremen with MNP = 7.
+Case 10: 0 ports not reachable from port Chennai with MNP = 5.
+Case 11: 0 ports not reachable from port Barcelona with MNP = 6.
+Case 12: 0 ports not reachable from port Charleston with MNP = 3.
+Case 13: 0 ports not reachable from port Callao with MNP = 7.
+Case 14: 0 ports not reachable from port Antwerp with MNP = 7.
+Case 15: 0 ports not reachable from port Chennai with MNP = 4.
+Case 16: 0 ports not reachable from port Ambarli with MNP = 8.

@@ -1,0 +1,11 @@
+Case 1: 2 ports not reachable from port Balboa with MNP = 2.
+Case 2: 0 ports not reachable from port Ambarli with MNP = 6.
+Case 3: 7 ports not reachable from port Balboa with MNP = 1.
+Case 4: 0 ports not reachable from port Chennai with MNP = 7.
+Case 5: 0 ports not reachable from port Algeciras with MNP = 4.
+Case 6: 2 ports not reachable from port Cartagena with MNP = 2.
+Case 7: 0 ports not reachable from port Ambarli with MNP = 9.
+Case 8: 0 ports not reachable from port Chennai with MNP = 4.
+Case 9: 0 ports not reachable from port Alexandria with MNP = 4.
+Case 10: 0 ports not reachable from port Barcelona with MNP = 4.
+Case 11: 0 ports not reachable from port Balboa with MNP = 4.
