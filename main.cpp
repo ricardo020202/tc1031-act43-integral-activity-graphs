@@ -2,7 +2,7 @@
 //
 // File: main.cpp
 // Author: José Ricardo Rosales Castañeda - A01709449
-// Author: 
+// Author: Uri Jared Gopar Morales -A01709413
 // Date: 25/11/2022
 //
 // =================================================================
