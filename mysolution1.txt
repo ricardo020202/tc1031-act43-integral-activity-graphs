@@ -1,0 +1,16 @@
+Alexandria	1	1	0	0	1	0	0	0	0	0	0	0	0	0	0	
+Algeciras	0	1	0	0	0	1	1	1	0	0	1	0	0	0	0	
+Ambarli	0	1	1	1	0	0	0	1	0	0	0	0	0	0	0	
+Antwerp	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	
+Balboa	0	0	0	0	1	1	0	0	0	0	0	0	0	0	0	
+Bandar	0	0	0	0	0	1	1	0	0	0	0	0	0	0	0	
+Barcelona	0	0	0	0	1	0	1	0	0	0	0	0	0	0	0	
+Bremen	0	0	0	0	0	0	0	1	1	1	0	0	0	0	0	
+Busan	1	0	0	1	1	0	1	0	1	0	0	0	0	0	0	
+Cai_Mep	0	0	0	0	1	0	0	0	0	1	1	0	0	1	0	
+Callao	0	0	1	0	0	0	0	0	0	0	1	0	0	0	0	
+Cartagena	1	0	0	1	1	0	0	0	0	0	1	1	0	0	0	
+Charleston	0	0	0	0	0	0	0	0	1	0	1	0	1	0	0	
+Chennai	0	0	0	0	1	0	0	0	0	0	0	0	0	1	0	
+Chittagong	0	0	1	0	0	0	0	0	0	0	0	0	0	0	1	
+
