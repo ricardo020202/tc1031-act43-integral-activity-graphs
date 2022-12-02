@@ -1,7 +1,8 @@
 // =========================================================
 // File: ugraph.h
 // Author: José Ricardo Rosales Castañeda - A01709449
-// Date: 09/11/2022
+// Author: Uri Jared Gopar Morales - A01709413
+// Date: 01/12/2022
 // =========================================================
 
 #ifndef UGRAPH_H_
@@ -22,8 +23,9 @@
 //==============================================================================
 // Class UGraph
 //==============================================================================
-template<class Vertex>
-class UnweightedGraph {
+template <class Vertex>
+class UnweightedGraph
+{
 public:
 	virtual void addEdge(Vertex, Vertex) = 0;
 	virtual bool containsVertex(Vertex) const = 0;
@@ -35,13 +37,14 @@ public:
 //==============================================================================
 // Class UMatrixGraph
 //==============================================================================
-template<class Vertex>
-class UMatrixGraph : public UnweightedGraph<Vertex>{
+template <class Vertex>
+class UMatrixGraph : public UnweightedGraph<Vertex>
+{
 private:
 	int next, size;
 	bool direction;
 	std::vector<Vertex> vertexes;
-	std::vector<std::vector<bool> > edges;
+	std::vector<std::vector<bool>> edges;
 
 	int indexOf(Vertex v) const;
 
@@ -59,17 +62,20 @@ public:
 // Constructor of UMatrixGraph
 //==============================================================================
 template <class Vertex>
-UMatrixGraph<Vertex>::UMatrixGraph(int max, bool dir) {
+UMatrixGraph<Vertex>::UMatrixGraph(int max, bool dir)
+{
 	size = max;
-	if (size == 0) {
-        throw RangeError();
+	if (size == 0)
+	{
+		throw RangeError();
 	}
 
 	next = 0;
 	direction = dir;
 	vertexes.resize(size);
 	edges.resize(size);
-	for (int i = 0; i < size; i++) {
+	for (int i = 0; i < size; i++)
+	{
 		edges[i].resize(size, false);
 		edges[i][i] = true;
 	}
@@ -82,9 +88,12 @@ UMatrixGraph<Vertex>::UMatrixGraph(int max, bool dir) {
 // @complexity: O(n)
 //==============================================================================
 template <class Vertex>
-int UMatrixGraph<Vertex>::indexOf(Vertex v) const {
-	for (int i = 0; i < next; i++) {
-		if (vertexes[i] == v) {
+int UMatrixGraph<Vertex>::indexOf(Vertex v) const
+{
+	for (int i = 0; i < next; i++)
+	{
+		if (vertexes[i] == v)
+		{
 			return i;
 		}
 	}
@@ -98,10 +107,13 @@ int UMatrixGraph<Vertex>::indexOf(Vertex v) const {
 // @complexity: O(n)
 //==============================================================================
 template <class Vertex>
-void UMatrixGraph<Vertex>::addEdge(Vertex from, Vertex to) {
+void UMatrixGraph<Vertex>::addEdge(Vertex from, Vertex to)
+{
 	int fp = indexOf(from);
-	if (fp == -1) {
-		if (next == size) {
+	if (fp == -1)
+	{
+		if (next == size)
+		{
 			throw OutOfMemory();
 		}
 
@@ -110,8 +122,10 @@ void UMatrixGraph<Vertex>::addEdge(Vertex from, Vertex to) {
 	}
 
 	int tp = indexOf(to);
-	if (tp == -1) {
-		if (next == size) {
+	if (tp == -1)
+	{
+		if (next == size)
+		{
 			throw OutOfMemory();
 		}
 
@@ -120,7 +134,8 @@ void UMatrixGraph<Vertex>::addEdge(Vertex from, Vertex to) {
 	}
 
 	edges[fp][tp] = true;
-	if (!direction) {
+	if (!direction)
+	{
 		edges[tp][fp] = true;
 	}
 }
@@ -132,7 +147,8 @@ void UMatrixGraph<Vertex>::addEdge(Vertex from, Vertex to) {
 // @complexity: O(n)
 //==============================================================================
 template <class Vertex>
-bool UMatrixGraph<Vertex>::containsVertex(Vertex v) const {
+bool UMatrixGraph<Vertex>::containsVertex(Vertex v) const
+{
 	return (indexOf(v) != -1);
 }
 
@@ -142,7 +158,8 @@ bool UMatrixGraph<Vertex>::containsVertex(Vertex v) const {
 // @complexity: O(n)
 //==============================================================================
 template <class Vertex>
-std::vector<Vertex> UMatrixGraph<Vertex>::getVertexes() const {
+std::vector<Vertex> UMatrixGraph<Vertex>::getVertexes() const
+{
 	std::vector<Vertex> result(vertexes);
 	return result;
 }
@@ -154,15 +171,19 @@ std::vector<Vertex> UMatrixGraph<Vertex>::getVertexes() const {
 // @complexity: O(n)
 //==============================================================================
 template <class Vertex>
-std::set<Vertex> UMatrixGraph<Vertex>::getConnectionFrom(Vertex v) const {
+std::set<Vertex> UMatrixGraph<Vertex>::getConnectionFrom(Vertex v) const
+{
 	int i = indexOf(v);
-	if (i == -1) {
+	if (i == -1)
+	{
 		throw NoSuchElement();
 	}
 
 	std::set<Vertex> result;
-	for (int j = 0; j < next; j++) {
-		if (i != j && edges[i][j]) {
+	for (int j = 0; j < next; j++)
+	{
+		if (i != j && edges[i][j])
+		{
 			result.insert(vertexes[j]);
 		}
 	}
@@ -175,12 +196,15 @@ std::set<Vertex> UMatrixGraph<Vertex>::getConnectionFrom(Vertex v) const {
 // @complexity: O(n^2)
 //==============================================================================
 template <class Vertex>
-std::string UMatrixGraph<Vertex>::toString() const {
+std::string UMatrixGraph<Vertex>::toString() const
+{
 	std::stringstream aux;
 
-	for (int i = 0; i < next; i++) {
+	for (int i = 0; i < next; i++)
+	{
 		aux << vertexes[i] << "\t";
-		for (int j = 0; j < next; j++) {
+		for (int j = 0; j < next; j++)
+		{
 			aux << edges[i][j] << "\t";
 		}
 		aux << "\n";
@@ -195,9 +219,11 @@ std::string UMatrixGraph<Vertex>::toString() const {
 // @complexity: O(n^2)
 //==============================================================================
 template <class Vertex>
-void UMatrixGraph<Vertex>::loadGraph(std::fstream &input) {
+void UMatrixGraph<Vertex>::loadGraph(std::fstream &input)
+{
 	Vertex from, to;
-	while (input >> from >> to) {
+	while (input >> from >> to)
+	{
 		addEdge(from, to);
 	}
 }
@@ -209,24 +235,32 @@ void UMatrixGraph<Vertex>::loadGraph(std::fstream &input) {
 // @complexity: O(n^2)
 //==============================================================================
 template <class Vertex>
-void dfs(const Vertex& start, const UnweightedGraph<Vertex>* graph) {
+std::set<Vertex> dfs(const Vertex &start,
+					 const UnweightedGraph<Vertex> *graph)
+{
+
 	std::set<Vertex> visited;
 	std::stack<Vertex> pending;
 	typename std::set<Vertex>::iterator itr;
 
 	pending.push(start);
-	while (!pending.empty()) {
+	while (!pending.empty())
+	{
 		Vertex v = pending.top();
 		pending.pop();
-		if (visited.find(v) == visited.end()) {
+		if (visited.find(v) == visited.end())
+		{
 			visited.insert(v);
-			std::set<Vertex> connected = graph->getConnectionFrom(v);
-			for (itr = connected.begin(); itr != connected.end(); itr++) {
-				pending.push( (*itr) );
+			std::set<Vertex> connected =
+				graph->getConnectionFrom(v);
+			for (itr = connected.begin();
+				 itr != connected.end(); itr++)
+			{
+				pending.push((*itr));
 			}
-			std::cout << v << " ";
 		}
 	}
+	return visited;
 }
 
 //==============================================================================
@@ -236,24 +270,66 @@ void dfs(const Vertex& start, const UnweightedGraph<Vertex>* graph) {
 // @complexity: O(n^2)
 //==============================================================================
 template <class Vertex>
-void bfs(const Vertex& start, const UnweightedGraph<Vertex>* graph) {
+std::set<Vertex> bfs(const Vertex &start, const UnweightedGraph<Vertex> *graph)
+{
 	std::set<Vertex> visited;
 	std::queue<Vertex> pending;
 	typename std::set<Vertex>::iterator itr;
 
 	pending.push(start);
-	while (!pending.empty()) {
-		Vertex v = pending.front(); 
+	while (!pending.empty())
+	{
+		Vertex v = pending.front();
 		pending.pop();
-		if (visited.find(v) == visited.end()) {
+		if (visited.find(v) == visited.end())
+		{
 			visited.insert(v);
 			std::set<Vertex> connected = graph->getConnectionFrom(v);
-			for (itr = connected.begin(); itr != connected.end(); itr++) {
-				pending.push( (*itr) );
+
+			for (itr = connected.begin();itr != connected.end(); itr++)
+			{
+				pending.push((*itr));
 			}
-			std::cout << v << " ";
 		}
 	}
+	return visited;
+}
+
+//==============================================================================
+// Get the max number of vertexes a vertex can visit with a limit
+// @param start: vertex where the search starts
+// @param graph: the graph
+// @param limit: the limit
+// @complexity: O(n^2)
+//==============================================================================
+template <class Vertex>
+int getPorts(const Vertex &start, UnweightedGraph<Vertex> &graph, int MNP)
+{
+	std::set<Vertex> visited;
+	typedef std::pair<Vertex, int> VertexPair;
+	std::queue<VertexPair> q;
+
+	q.push({start, 0});
+
+	while (q.empty() == false)
+	{
+		VertexPair vertexPair = q.front();
+		q.pop();
+		Vertex v1 = vertexPair.first;
+		int mnp = vertexPair.second;
+		if (visited.find(v1) == visited.end())
+		{
+			visited.insert(v1);
+			if (mnp < MNP)
+			{
+				for (Vertex w : graph.getConnectionFrom(v1))
+				{
+					q.push({w, mnp + 1});
+				}
+			}
+		}
+	}
+	return bfs(start, &graph).size() - visited.size();
 }
 
 #endif
